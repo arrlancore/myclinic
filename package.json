@@ -1,0 +1,34 @@
+{
+  "name": "myclinic",
+  "version": "1.0.0",
+  "description": "The simple app medical recording for clinic",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies":{
+    "express":"*",
+    "mongoose":"*",
+    "bcryptjs":"*",
+    "cors":"*",
+    "jsonwebtoken":"*",
+    "body-parser":"*",
+    "passport":"*",
+    "passport-jwt":"*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arrlancore/myclinic.git"
+  },
+  "keywords": [
+    "myclinic",
+    "mean"
+  ],
+  "author": "dwiki arlan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arrlancore/myclinic/issues"
+  },
+  "homepage": "https://github.com/arrlancore/myclinic#readme"
+}
