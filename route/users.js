@@ -22,6 +22,16 @@ userRouter.post('/register', (req, res, next)=>{
 	})
 });
 
+// update user information
+userRouter.put('/edit/:id', function(req,res, next){
+	User.findByIdAndUpdate({_id:req.params.id}, req.body).then(function(user){
+		User.findOne({_id:req.params.id}).then(function(user){
+			res.send(user);	
+		});
+	});
+	
+});
+
 // Authenticate route
 userRouter.post('/authenticate', (req, res, next)=>{
 	const username=req.body.username;

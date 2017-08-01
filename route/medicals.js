@@ -85,11 +85,128 @@ medicalRouter.put('/m-record/delete/:id/:mid', function(req,res,next){
 });
 
 // MEDICAL HISTORY
-
+// Add new m-history
+medicalRouter.put('/m-history/:id', function(req,res, next){
+	Medical.findByIdAndUpdate(
+     {_id:req.params.id},
+     { $push: {"medical_history": req.body}},
+     {  safe: true, upsert: true},
+       function(err, model) {
+         if(err){
+        	console.log(err);
+        	return res.send(err);
+         }
+          Medical.findOne({_id:req.params.id}).then(function(mrecord){
+			res.send(mrecord);	
+ 		});
+      });
+	
+});
+// Delete m-history
+medicalRouter.put('/m-history/delete/:id/:mid', function(req,res,next){
+	Medical.update({_id:req.params.id}, { "$pull": { "medical_history": { "_id": (req.params.mid) } }}, { safe: true, multi:true }, 
+		function(err, obj) {
+			if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        Medical.findOne({_id:req.params.id}).then(function(mrecord){
+			res.send(mrecord);	
+ 		});
+	});
+});
 // F/S HISTORY
-
+// Add new fs history
+medicalRouter.put('/fs-history/:id', function(req,res, next){
+	Medical.findByIdAndUpdate(
+     {_id:req.params.id},
+     { $push: {"fs_history": req.body}},
+     {  safe: true, upsert: true},
+       function(err, model) {
+         if(err){
+        	console.log(err);
+        	return res.send(err);
+         }
+          Medical.findOne({_id:req.params.id}).then(function(mrecord){
+			res.send(mrecord);	
+ 		});
+      });
+	
+});
+// Delete fs history
+medicalRouter.put('/fs-history/delete/:id/:mid', function(req,res,next){
+	Medical.update({_id:req.params.id}, { "$pull": { "fs_history": { "_id": (req.params.mid) } }}, { safe: true, multi:true }, 
+		function(err, obj) {
+			if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        Medical.findOne({_id:req.params.id}).then(function(mrecord){
+			res.send(mrecord);	
+ 		});
+	});
+});
 // ALLERGIES
-
+// Add new allergies
+medicalRouter.put('/allergies/:id', function(req,res, next){
+	Medical.findByIdAndUpdate(
+     {_id:req.params.id},
+     { $push: {"allergies": req.body}},
+     {  safe: true, upsert: true},
+       function(err, model) {
+         if(err){
+        	console.log(err);
+        	return res.send(err);
+         }
+          Medical.findOne({_id:req.params.id}).then(function(mrecord){
+			res.send(mrecord);	
+ 		});
+      });
+	
+});
+// Delete allergies
+medicalRouter.put('/allergies/delete/:id/:mid', function(req,res,next){
+	Medical.update({_id:req.params.id}, { "$pull": { "allergies": { "_id": (req.params.mid) } }}, { safe: true, multi:true }, 
+		function(err, obj) {
+			if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        Medical.findOne({_id:req.params.id}).then(function(mrecord){
+			res.send(mrecord);	
+ 		});
+	});
+});
 // MEDICATION HISTORY
+// Add new allergies
+medicalRouter.put('/medication-history/:id', function(req,res, next){
+	Medical.findByIdAndUpdate(
+     {_id:req.params.id},
+     { $push: {"medication_history": req.body}},
+     {  safe: true, upsert: true},
+       function(err, model) {
+         if(err){
+        	console.log(err);
+        	return res.send(err);
+         }
+          Medical.findOne({_id:req.params.id}).then(function(mrecord){
+			res.send(mrecord);	
+ 		});
+      });
+	
+});
+// Delete allergies
+medicalRouter.put('/medication-history/delete/:id/:mid', function(req,res,next){
+	Medical.update({_id:req.params.id}, { "$pull": { "medication_history": { "_id": (req.params.mid) } }}, { safe: true, multi:true }, 
+		function(err, obj) {
+			if(err){
+        	console.log(err);
+        	return res.send(err);
+        }
+        Medical.findOne({_id:req.params.id}).then(function(mrecord){
+			res.send(mrecord);	
+ 		});
+	});
+});
 //export userRouter
 module.exports=medicalRouter;
