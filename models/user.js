@@ -1,20 +1,26 @@
 const mongoose= require('mongoose');
 const bcrypt=require('bcryptjs');
 const config=require('../config/database');
+const uniqueValidator = require('mongoose-unique-validator');
 
 
 // User Scheme
 const UserScheme=mongoose.Schema({
 	name:{
-		type:String
+		type:String,
+		required:true
 	},
 	email:{
 		type:String,
-		required:true
+		required:true,
+		unique: true,
+		index:true
 	},
 	username:{
 		type:String,
-		required:true
+		required:true,
+		unique: true,
+		index:true
 	},
 	password:{
 		type:String,
@@ -35,13 +41,16 @@ const UserScheme=mongoose.Schema({
 		type:String
 	},
 	gender:{
-		type:String
+		type:String,
+		required:true
 	},
 	birth_date:{
-		type:Date
+		type:Date,
+		required:true
 	},
 	blood_type:{
-		type:String
+		type:String,
+		required:true
 	},
 	emergency_contact:{
 		name:{
@@ -67,7 +76,7 @@ const UserScheme=mongoose.Schema({
     timestamps: true
 }
 );
-
+UserScheme.plugin(uniqueValidator, {message: 'is already registered.'});
 const User=module.exports=mongoose.model('User', UserScheme);
 
 module.exports.getUserById=function(id, callback){
@@ -92,7 +101,7 @@ bcrypt.genSalt(10, (err,salt)=>{
 
 module.exports.comparePassword=function(candidatePassword, hash, callback){	
 	bcrypt.compare(candidatePassword, hash, (err, isMatch)=>{
-		if (err)throw err;
+		if (err) throw err;
 		callback(null, isMatch);
 });
 

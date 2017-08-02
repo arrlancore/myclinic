@@ -1,0 +1,13 @@
+.sidebar{
+	height: 100vh;
+	position: fixed;
+}
+.nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active{
+	background-color: unset !important;
+	font-size: 106%
+}
+
+a{
+	color: #545c8a;
+	text-decoration:none;
+}

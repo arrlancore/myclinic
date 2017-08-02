@@ -20,7 +20,7 @@ mongoose.connection.on('error', (err)=>{
 })
 
 // Config the port number
-const port=process.env.PORT || 8080;
+const port= 4000; //process.env.PORT || 8080;
 
 const users=require('./route/users');
 const medicals=require('./route/medicals');

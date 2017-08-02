@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 100%;
+}
+.navbar-brand{
+	cursor: pointer;
+}
+.loggedin{
+    padding-top: 54px;
+}
+
+.main-btn {
+    border: none;
+    padding: 12px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0px;
+}
+.main-btn:hover{
+	opacity: 0.9;
+}
+.main-out-btn {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    padding: 12px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0px;
+    border-radius: 50px;
+    background-color: #32ccfe;
+}
+.bg-nav{
+	background-color: #32ccfe
+}
+.bg-main{
+	background-color: #32ccfe;
+}
+.bg-white{
+	background-color: #ffffff;
+}
+.bg-grey{
+	background-color: #f3f3f3;
+}
+
+input.main {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #efefef;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input.main:focus {
+    border: 2px solid #ccc;
+}

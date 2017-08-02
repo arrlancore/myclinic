@@ -1,13 +1,16 @@
 const mongoose= require('mongoose');
 const bcrypt=require('bcryptjs');
 const config=require('../config/database');
+const uniqueValidator = require('mongoose-unique-validator');
 
-var Schemas=mongoose.Schema,
-ObjectId = Schemas.ObjectId;
 
 // User Scheme
 const MedicalSchema=mongoose.Schema({
-	_patientId:ObjectId,
+	_patientId:{
+		type:String,
+		unique: true,
+		index:true
+	},
 	m_record:[{
 		complaint:{
 			type:String
@@ -64,5 +67,5 @@ const MedicalSchema=mongoose.Schema({
 	}],
 }
 );
-
+MedicalSchema.plugin(uniqueValidator, {message: 'is already registered.'});
 const Medical=module.exports=mongoose.model('Medical', MedicalSchema);

@@ -1,0 +1,134 @@
+ <nav class="navbar bg-nav fixed-top">
+      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand text-white" title="myclinic" (click)="onHome()"><i class="fa fa-medkit"></i> myclinic</a>
+    </nav>
+ <div class="container">
+ <div class="row">
+        <div class="col-sm-8 form-register">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+			    		<h3 class="panel-title display-4">Register</h3>
+			 			</div>
+			 			<br>
+			 			<div class="panel-body">
+			    		<form (submit)="onRegisterSubmit()">
+			    		<div class="row">
+				    		<div class="col-sm-6">
+				    			<div class="form-group">
+				    			<label for="name">Full Name<span class="required">*</span></label>
+				                <input type="text" [(ngModel)]="name" name="name" id="name" class="form-control input-sm" placeholder="Name" required="true">
+				    			</div>
+				    		</div>
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+								<label for="birthdate">Date of Birth<span class="required">*</span></label>
+				                <input type="date" [(ngModel)]="birthdate" name="birthdate" id="birthdate" class="form-control" placeholder="Date of Birth" required="true">
+				    			</div>
+				    		</div>
+			    		</div>
+			    		<div class="row">
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+				    			<div class="form-group">
+				    			<label for="gender">Gender<span class="required">*</span></label>
+								  <select class="form-control" [(ngModel)]="gender" name="gender" id="gender" required="true">
+								    <option selected="true" disabled="true"> </option>
+								    <option value="Male">Male</option>
+								    <option value="Female">Female</option>
+								  </select>
+								</div>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+								<label for="blood">Blood Type</label>
+								  <select class="form-control" [(ngModel)]="bloodtype" name="bloodtype" id="blood">
+								    <option selected="true" disabled="true"> </option>
+								    <option value="A">A</option>
+								    <option value="B">B</option>
+								    <option value="AB">AB</option>
+								    <option value="O">O</option>
+								  </select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+				    		<div class="col-sm-6">
+				    			<div class="form-group">
+				    			<label for="email">Email<span class="required">*</span></label>
+				    				<input type="email" name="email" [(ngModel)]="email" id="email" class="form-control input-sm" placeholder="Email Address" required="true">
+				    			</div>
+				    		</div>
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+				    			<div class="form-group">
+				    			<label for="username">Username<span class="required">*</span></label>
+				                <input type="text" name="username" [(ngModel)]="username" id="username" class="form-control input-sm" placeholder="Username" required="true">
+				    			</div>
+				    		</div>
+			    		</div>
+			    		<div class="row">
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+				    			<div class="form-group">
+				    			<label for="password">Password<span class="required">*</span></label>
+				    				<input type="password" name="password" [(ngModel)]="password" id="password" class="form-control input-sm" placeholder="Password" required="true">
+				    			</div>
+				    		</div>
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+				    			<div class="form-group">
+				    			<label for="address">Address</label>
+				                <input type="text" name="address" id="address" [(ngModel)]="address" class="form-control input-sm" placeholder="Address">
+				    			</div>
+				    		</div>
+			    		</div>
+			    		<div class="row">
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+				    			<div class="form-group">
+				    			<label for="phone">Phone Number</label>
+				                <input type="tel" name="phone" id="phone" [(ngModel)]="phone" class="form-control input-sm" placeholder="Phone Number">
+				    			</div>
+				    		</div>
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+				    			<div class="form-group">
+					    			<label for="mobile">Mobile Number</label>
+					                <input type="tel" name="mobile" id="mobile" [(ngModel)]="mobile" class="form-control input-sm" placeholder="Mobile Number">
+				    			</div>
+				    		</div>
+			    		</div>
+			    		<h3 class="page-header">Emergency Contact</h3>
+			    		<div class="row">
+				    		<div class="col-sm-6">
+				    			<div class="form-group">
+				    			<label for="e-name">PIC Name</label>
+				    				<input type="text" name="e-name" [(ngModel)]="ename" id="ename" class="form-control input-sm" placeholder="Name">
+				    			</div>
+				    		</div>
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+				    			<div class="form-group">
+				    			<label for="role">Role</label>
+				                <input type="text" name="erole" id="role" [(ngModel)]="erole" class="form-control input-sm" placeholder="Your wife, husband, father, sister, etc.">
+				    			</div>
+				    		</div>
+			    		</div>
+			    		<div class="row">
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+				    			<div class="form-group">
+				    			<label for="e-phone">Phone Number</label>
+				    				<input type="tel" name="ephone" [(ngModel)]="ephone" id="e-phone" class="form-control input-sm" placeholder="Phone Number">
+				    			</div>
+				    		</div>
+				    		<div class="col-xs-6 col-sm-6 col-md-6">
+				    			<div class="form-group">
+				    			<label for="e-address">Address</label>
+				    			<input type="text" name="eaddress" [(ngModel)]="eaddress" id="e-address" class="form-control input-sm" placeholder="Address">
+
+				    			</div>
+				    		</div>
+			    		</div>
+			    		<flash-messages></flash-messages>
+	    				<input type="submit" value="Register" class="main-btn bg-main text-white">
+			    		
+			    		</form>
+			    	</div>
+	    		</div>
+    		</div>
+    	</div>

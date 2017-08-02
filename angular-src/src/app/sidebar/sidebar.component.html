@@ -1,0 +1,16 @@
+<div *ngIf="authService.loggedIn()" class="row loggedin">
+        <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item nav-link " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/dashbord']"><i class="fa fa-home" aria-hidden="true"></i> Dashbord</a>
+            </li>
+            <li class="nav-item nav-link " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/medicalrecord']"><i class="fa fa-file" aria-hidden="true"></i> Medical Record</a>
+            </li>
+            <li class="nav-item nav-link " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/newrecord']"><i class="fa fa-plus-square" aria-hidden="true"></i> New Record</a>
+            </li>
+            <li class="nav-item nav-link " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/patient']"><i class="fa fa-users" aria-hidden="true"></i> Patient</a>
+            </li>
+            <li class="nav-item nav-link " [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/doctor']"><i class="fa fa-user-md" aria-hidden="true"></i> Doctor</a>
+            </li>
+          </ul>
+        </nav>
+</div>

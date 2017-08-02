@@ -1,0 +1,10 @@
+.form-register{
+	margin: 0 auto;
+	margin-top: 100px;
+}
+.required{
+	color: red
+}
+.navbar-brand{
+	font-size: 150%
+}

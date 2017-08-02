@@ -1,0 +1,34 @@
+
+.col-md-8{
+	width: 100%;
+	height: 100vh;
+}
+.col-md-4{
+	width: 100%;
+	height: 100vh;
+}
+
+.masthead-brand{
+	padding-top: 5%;
+}
+.cover{
+	padding-top: 15%;
+}
+.form-signin{
+	padding-top: 60%;
+}
+
+input.main {
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #efefef;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+
+input.main:focus {
+    border: 2px solid #ccc;
+}
