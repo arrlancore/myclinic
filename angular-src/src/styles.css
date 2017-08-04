@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+.mat-ink-bar{
+  background-color: #999999 !important;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
+  /*font-family: 'Roboto', sans-serif;*/
   font-size: 100%;
 }
 .navbar-brand{
@@ -23,6 +28,7 @@ body {
 .main-btn:hover{
 	opacity: 0.9;
 }
+
 .main-out-btn {
     border: 2px solid #ffffff;
     color: #ffffff;
@@ -48,6 +54,15 @@ body {
 .bg-grey{
 	background-color: #f3f3f3;
 }
+.font-main{
+    color: #32ccfe;
+}
+.font-grey{
+    color: #f3f3f3;
+}
+.font-dark-grey{
+    color: #888888;
+}
 
 input.main {
     width: 100%;
@@ -61,5 +76,18 @@ input.main {
 }
 
 input.main:focus {
+    border: 2px solid #ccc;
+}
+.completer-input{
+    width: 100%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #efefef;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+.completer-input:focus {
     border: 2px solid #ccc;
 }

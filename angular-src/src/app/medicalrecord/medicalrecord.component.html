@@ -1,3 +1,102 @@
-<p>
-  medicalrecord works!
-</p>
+<div class="row">
+    <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+ 	<h2>Medical Record</h2>
+ 	<br>
+	<div class="card">
+	  <h4 class="card-header font-dark-grey">Demographics</h4>
+	  <div class="card-block">
+	  	<div class="row">
+	  		<div class="col-md-6">
+	  			<h3 class="card-title font-dark-grey">{{datauser.name}}</h3>
+	    		<p><span class="font-dark-grey small">BIRTH OF DATE   </span>{{datauser.birth_date | date}}</p>
+	    		<p><span class="font-dark-grey small">GENDER   </span>{{datauser.gender}}</p>
+	    		<p><span class="font-dark-grey small">BLOOD TYPE  </span>{{datauser.blood_type}}</p>
+	  		</div>
+	  		<div class="col-md-6">
+	  			<p><span class="font-dark-grey small">PHONE   </span>{{datauser.phone}}</p>
+	    		<p><span class="font-dark-grey small">MOBILE   </span>{{datauser.mobile}}</p>
+	    		<p><span class="font-dark-grey small">EMAIL  </span>{{datauser.email}}</p>    		
+	    		<p><span class="font-dark-grey small">ADDRESS   </span>{{datauser.address}}</p>
+	    		
+	  		</div>
+	  	</div>	    
+	  </div>
+	</div>
+	<div class="card">
+	  <h4 class="card-header font-dark-grey">Emergency Contact</h4>
+	  <div class="card-block">
+	  	<div class="row">
+	  		<div class="col-md-6">
+	    		<p><span class="font-dark-grey small">NAME   </span>{{datauser.ename}}</p>
+	    		<p><span class="font-dark-grey small">ROLE   </span>{{datauser.erole}}</p>
+	  		</div>
+	  		<div class="col-md-6">
+	  			<p><span class="font-dark-grey small">PHONE   </span>{{datauser.ephone}}</p>
+	    		<p><span class="font-dark-grey small">ADDRESS   </span>{{datauser.eaddress}}</p>
+	    		
+	  		</div>
+	  	</div>	    
+	  </div>
+	</div> 
+
+
+			<div class="card">
+			  <h4 class="card-header font-dark-grey">Medical History</h4>
+			  <div class="card-block">
+			  	<p>{{datamh}}</p>
+			  </div>
+			</div> 
+
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card">
+			  <h4 class="card-header font-dark-grey">Medication History</h4>
+			  <div class="card-block">
+			  	<p>{{datam}}</p>
+			  </div>
+			</div> 
+			
+		</div>
+
+
+		<div class="col-md-4">
+			<div class="card">
+			  <h4 class="card-header font-dark-grey">Family&Social History</h4>
+			  <div class="card-block">
+			  	<p>{{datafs}}</p>
+			  </div>
+			</div> 
+			
+		</div>
+
+		<div class="col-md-4">
+			<div class="card">
+			  <h4 class="card-header font-dark-grey">Allergies</h4>
+			  <div class="card-block">
+			  	<p>{{dataal}}</p>
+			  </div>
+			</div> 
+			
+		</div>
+	</div>
+	<div class="card">
+			  <h4 class="card-header font-dark-grey">Past Medical Record</h4>
+			  <div class="card-block">
+			  	<div class="card" *ngFor="let d of datamd">
+				  <div class="card-block">
+				    <h4 class="card-title font-dark-grey">{{d.edited | date}}</h4>
+				    <p class="card-text">Complaint: <em>{{d.complaint}}</em></p>
+				    <p class="card-text">Lab Result: {{d.lab_result}}</p>
+				    <p class="card-text">Diagnosa Result: {{d.diag_result}}</p>				    
+				    <p class="card-text">Current Weight: {{d.weight}} KG</p>
+				    <p class="card-text">Current Height: {{d.height}} CM</p>
+				    <p class="card-text">Problem: {{d.problem_list}} </p>
+				    <p class="card-text">Plan: {{d.plan}} </p>
+				    <p class="card-text">Doctor: Dr. {{d.created_by}} </p>
+				  </div>
+				</div>
+			  </div>
+			</div> 
+    </main>
+</div>
+  

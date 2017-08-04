@@ -1,3 +1,130 @@
-<p>
-  newrecord works!
-</p>
+<div class="row">
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+          	
+				  <h2>Medical record</h2>
+          	<p class="lead">Select patient</p>
+            <ng2-completer class="main" placeholder="Type a name here" [(ngModel)]="searchStr" (selected)="onItemSelect($event)" [datasource]="dataService" [minSearchLength]="0"></ng2-completer>
+            <flash-messages></flash-messages>
+            <div class="record-data" *ngIf="recorderActive">          	
+           
+				<md-tab-group>
+				  <md-tab label="Medical Record">
+				  <form>				  
+				  	<md-input-container class="fullwidth">
+					  <input mdInput [(ngModel)]="complaint" name="complaint" placeholder="Chief Complaint">
+					</md-input-container>
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="weight" name="weight" placeholder="Current Weight (KG)">
+					</md-input-container>
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="height" name="height" placeholder="Current Height (CM)">
+					</md-input-container>
+					<md-input-container class="fullwidth">
+					  <input mdInput [(ngModel)]="lab_result" name="lab_result" placeholder="Lab Result">
+					</md-input-container>
+					<md-input-container class="fullwidth">
+					  <input mdInput [(ngModel)]="diag_result" name="diag_result" placeholder="Diagnosa Result">
+					</md-input-container>
+					<md-input-container class="fullwidth">
+					  <input mdInput [(ngModel)]="problem_list" name="problem_list" placeholder="Problem List">
+					</md-input-container>
+					<md-input-container class="fullwidth">
+					  <input mdInput [(ngModel)]="plan" name="plan" placeholder="Plan">
+					</md-input-container>
+        			<input type="submit" (click)="onSubmitMedicalRecord()" class="main-btn bg-main text-white" value="Add">
+        			</form>
+        			<br>
+        			<p class="lead">Last Record on total: {{totalrecord}}</p>
+        			<ul class="list-group">
+					  <li *ngFor="let record of listrecord" class="list-group-item justify-content-between">
+					    {{record.complaint}} on {{record.edited | date}} 
+					    <span (click)="removeMR(record._id)" class="badge-pill onRemove"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+					  </li>
+					</ul>
+				  </md-tab>
+				  <!-- Medical History -->
+				  <md-tab label="Medical History">				  	
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="mhistory" name="mhistory" placeholder="Name of Medical History">
+					</md-input-container>
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="year" type="Number" name="year" placeholder="Year">
+					</md-input-container>
+        			<input type="submit" (click)="onSubmitMedicalHistory()" class="main-btn bg-main text-white" value="Add">
+        			<br>
+        			<p class="lead">Last Record</p>
+        			<ul class="list-group">
+					  <li *ngFor="let record of listhistory" class="list-group-item justify-content-between">
+					    {{record.title}} on {{record.year}} 
+					    <span (click)="removeHM(record._id)" class="badge-pill onRemove"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+					  </li>
+					</ul>
+				  </md-tab>
+				  <!-- Medication History -->
+				  <md-tab label="Medication History">				  	
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="mchistory" name="mchistory" placeholder="Medication">
+					</md-input-container>
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="status" type="text" name="status" placeholder="Status">
+					</md-input-container>
+        			<input type="submit" (click)="onSubmitMedicationHistory()" class="main-btn bg-main text-white" value="Add">
+        			<br>
+        			<p class="lead">Last Record</p>
+        			<ul class="list-group">
+					  <li *ngFor="let record of listmedication" class="list-group-item justify-content-between">
+					    {{record.name}} : {{record.status}} 
+					    <span (click)="removeHMC(record._id)" class="badge-pill onRemove"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+					  </li>
+					</ul>
+				  </md-tab>
+				  <!-- Allergies -->
+				  <md-tab label="Allergies">				  	
+					<md-input-container class="fullwidth">
+					  <input mdInput [(ngModel)]="alerof" name="alerof" placeholder="Allergies of">
+					</md-input-container>
+					<md-select [(ngModel)]="alertype" placeholder="Allergies type" class="fullwidth">
+					  <md-option value="Food">
+					    Food
+					  </md-option>
+					  <md-option value="Drug">
+					    Drug
+					  </md-option>
+					  <md-option value="Environment">
+					    Environment
+					  </md-option>
+					</md-select>
+        			<input type="submit" (click)="onSubmitAllergies()" class="main-btn bg-main text-white" value="Add">
+        			<br>
+        			<p class="lead">Last Record</p>
+        			<ul class="list-group">
+					  <li *ngFor="let record of listallergies" class="list-group-item justify-content-between">
+					    {{record.name}}
+					    <span (click)="removeAllergies(record._id)" class="badge-pill onRemove"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+					  </li>
+					</ul>
+				  </md-tab>
+				  <!-- F/S -->
+				  <md-tab label="F/S History">	
+				  <p>Family and Social History</p>			  	
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="fstitle" name="fstitle" placeholder="Title">
+					</md-input-container>
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="fsstatus" name="fstitle" placeholder="Status">
+					</md-input-container>
+        			<input type="submit" (click)="onSubmitFS()" class="main-btn bg-main text-white" value="Add">
+        			<br>
+        			<p class="lead">Last History</p>
+        			<ul class="list-group">
+					  <li *ngFor="let record of listfs" class="list-group-item justify-content-between">
+					    {{record.name}}
+					    <span (click)="removeFS(record._id)" class="badge-pill onRemove"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+					  </li>
+					</ul>
+				  </md-tab>
+				</md-tab-group>
+
+            </div>
+        </main>
+      </div>

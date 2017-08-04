@@ -48,7 +48,7 @@ medicalRouter.put('/m-record/:id', function(req,res, next){
         	return res.send(err);
          }
           Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
       });
 	
@@ -65,7 +65,7 @@ medicalRouter.put('/m-record/update/:id/:mid', function(req,res, next){
         	return res.send(err);
         }
         Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
  });
 	});
@@ -97,7 +97,7 @@ medicalRouter.put('/m-history/:id', function(req,res, next){
         	return res.send(err);
          }
           Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
       });
 	
@@ -111,7 +111,7 @@ medicalRouter.put('/m-history/delete/:id/:mid', function(req,res,next){
         	return res.send(err);
         }
         Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
 	});
 });
@@ -128,7 +128,7 @@ medicalRouter.put('/fs-history/:id', function(req,res, next){
         	return res.send(err);
          }
           Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
       });
 	
@@ -142,7 +142,7 @@ medicalRouter.put('/fs-history/delete/:id/:mid', function(req,res,next){
         	return res.send(err);
         }
         Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
 	});
 });
@@ -159,7 +159,7 @@ medicalRouter.put('/allergies/:id', function(req,res, next){
         	return res.send(err);
          }
           Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
       });
 	
@@ -173,7 +173,7 @@ medicalRouter.put('/allergies/delete/:id/:mid', function(req,res,next){
         	return res.send(err);
         }
         Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
 	});
 });
@@ -190,7 +190,7 @@ medicalRouter.put('/medication-history/:id', function(req,res, next){
         	return res.send(err);
          }
           Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
       });
 	
@@ -204,7 +204,7 @@ medicalRouter.put('/medication-history/delete/:id/:mid', function(req,res,next){
         	return res.send(err);
         }
         Medical.findOne({_id:req.params.id}).then(function(mrecord){
-			res.send(mrecord);	
+			res.send({success:true,mrecord});	
  		});
 	});
 });

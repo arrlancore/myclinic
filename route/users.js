@@ -57,7 +57,18 @@ userRouter.post('/authenticate', (req, res, next)=>{
 						id:user._id,
 						name:user.name,
 						username:user.username,
-						role:user.role
+						role:user.role,
+						email:user.email,
+						phone:user.phone,
+						mobile:user.mobile,
+						gender:user.gender,
+						birth_date:user.birth_date,
+						blood_type:user.blood_type,
+						address:user.address,
+						ename:user.emergency_contact.name,
+						erole:user.emergency_contact.role,
+						ephone:user.emergency_contact.phone,
+						eaddress:user.emergency_contact.address
 					}
 				});
 			}else{
@@ -75,10 +86,19 @@ userRouter.get('/users', function(req,res){
     users.forEach(function(user) {
       userMap[user._id] = user;
     });
-
+    
+    console.log(userMap);
     res.send(userMap);  
   });
 
+});
+
+// find only patient
+userRouter.get('/listpatient', function(req,res){
+User.find({ 'role': 'patient' }, function (err, patient) {
+  if (err) return handleError(err);
+  res.send(patient);
+});
 });
 
 // Profile route
