@@ -1,6 +1,14 @@
 <div class="row">
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
           <h2>Patient List</h2>
+          	<ul class="list-group">
+				<li *ngFor="let patient of patientlist" class="list-group-item justify-content-between text-uppercase">
+					    	{{patient.name}}
+					    <span class="badge-pill onRemove"><i (click)="onSeePatient(patient._id)" title="See Record" class="fa fa-eye" aria-hidden="true"></i> | <i title="Delete" (click)="onDeletePatient(patient._id)" class="fa fa-trash-o" aria-hidden="true"></i></span>
+				</li>
+		  	</ul> 
+			<br>
+			<flash-messages></flash-messages>
         </main>
       </div>
   

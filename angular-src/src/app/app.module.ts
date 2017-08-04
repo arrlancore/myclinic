@@ -18,7 +18,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MedicalrecordComponent } from './medicalrecord/medicalrecord.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NewrecordComponent } from './newrecord/newrecord.component';
-import {MdTabsModule,MdInputModule,MdSelectModule} from '@angular/material';
+import {MdTabsModule,MdInputModule,MdSelectModule,MdDatepickerModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PatientComponent } from './patient/patient.component';
 import { DoctorComponent } from './doctor/doctor.component';
@@ -30,6 +30,7 @@ const appRoutes : Routes = [
 // {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
  {path:'dashbord', component:DashbordComponent, canActivate:[AuthGuard]},
  {path:'medicalrecord', component:MedicalrecordComponent, canActivate:[AuthGuard]},
+ {path:'medicalrecord/:id', component:MedicalrecordComponent, canActivate:[AuthGuard]},
  {path:'newrecord', component:NewrecordComponent, canActivate:[AuthGuard]},
  {path:'patient', component:PatientComponent, canActivate:[AuthGuard]},
  {path:'doctor', component:DoctorComponent, canActivate:[AuthGuard]}

@@ -65,10 +65,13 @@ userRouter.post('/authenticate', (req, res, next)=>{
 						birth_date:user.birth_date,
 						blood_type:user.blood_type,
 						address:user.address,
-						ename:user.emergency_contact.name,
-						erole:user.emergency_contact.role,
-						ephone:user.emergency_contact.phone,
-						eaddress:user.emergency_contact.address
+						emergency_contact:{
+						name:user.emergency_contact.name,
+						role:user.emergency_contact.role,
+						phone:user.emergency_contact.phone,
+						address:user.emergency_contact.address
+						}
+						
 					}
 				});
 			}else{
@@ -95,10 +98,30 @@ userRouter.get('/users', function(req,res){
 
 // find only patient
 userRouter.get('/listpatient', function(req,res){
-User.find({ 'role': 'patient' }, function (err, patient) {
+ User.find({ 'role': 'patient' }, function (err, patient) {
   if (err) return handleError(err);
   res.send(patient);
+ });
 });
+// find only doctor
+userRouter.get('/listdoctor', function(req,res){
+ User.find({ 'role': 'doctor' }, function (err, doctor) {
+  if (err) return handleError(err);
+  res.send(doctor);
+ });
+});
+// delete user
+userRouter.delete('/delete/:id', function(req,res,next){
+	User.findByIdAndRemove({_id:req.params.id}).then(function(rem){
+		res.send({success:true,rem});
+	})
+	
+});
+// find only patient
+userRouter.get('/bio/:id', function(req,res,next){
+ User.findOne({_id:req.params.id}, function(err, bio) {
+  res.send(bio);	
+  });
 });
 
 // Profile route

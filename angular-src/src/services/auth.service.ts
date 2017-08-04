@@ -43,13 +43,34 @@ export class AuthService {
     this.authToken=token;
   }
 
-  // Profile
-  getProfile(){
+  // Get bio
+  getBio(id){
     let headers= new Headers();
-    this.loadToken();
-    headers.append('Authorization', this.authToken);
     headers.append('Content-type','application/json');
-    return this.http.get('http://localhost:4000/users/profile', {headers:headers})
+    return this.http.get('http://localhost:4000/users/bio/'+id, {headers:headers})
+    .map(res =>res.json());
+  }
+
+  // Get List Patient
+  getListPatient(){
+    let headers= new Headers();
+    headers.append('Content-type','application/json');
+    return this.http.get('http://localhost:4000/users/listpatient', {headers:headers})
+    .map(res =>res.json());
+  }
+
+  // Get List Doctor
+  getListDoctor(){
+    let headers= new Headers();
+    headers.append('Content-type','application/json');
+    return this.http.get('http://localhost:4000/users/listdoctor', {headers:headers})
+    .map(res =>res.json());
+  }
+  // delete User
+  deleteUser(id){
+    let headers= new Headers();
+    headers.append('Content-type','application/json');
+    return this.http.delete('http://localhost:4000/users/delete/'+id, {headers:headers})
     .map(res =>res.json());
   }
 

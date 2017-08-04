@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CompleterService, CompleterData, CompleterItem } from 'ng2-completer';
-import {MdTabsModule,MdInputModule} from '@angular/material';
 import { MedicaldataService } from '../../services/medicaldata.service';
 import { DatePipe } from '@angular/common';
 import { FlashMessagesService} from 'angular2-flash-messages';

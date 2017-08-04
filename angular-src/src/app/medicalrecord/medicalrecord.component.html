@@ -7,16 +7,16 @@
 	  <div class="card-block">
 	  	<div class="row">
 	  		<div class="col-md-6">
-	  			<h3 class="card-title font-dark-grey">{{datauser.name}}</h3>
-	    		<p><span class="font-dark-grey small">BIRTH OF DATE   </span>{{datauser.birth_date | date}}</p>
-	    		<p><span class="font-dark-grey small">GENDER   </span>{{datauser.gender}}</p>
-	    		<p><span class="font-dark-grey small">BLOOD TYPE  </span>{{datauser.blood_type}}</p>
+	  			<h3 class="card-title font-dark-grey">{{datauser?.name}}</h3>
+	    		<p><span class="font-dark-grey small">BIRTH OF DATE   </span>{{datauser?.birth_date | date}}</p>
+	    		<p><span class="font-dark-grey small">GENDER   </span>{{datauser?.gender}}</p>
+	    		<p><span class="font-dark-grey small">BLOOD TYPE  </span>{{datauser?.blood_type}}</p>
 	  		</div>
 	  		<div class="col-md-6">
-	  			<p><span class="font-dark-grey small">PHONE   </span>{{datauser.phone}}</p>
-	    		<p><span class="font-dark-grey small">MOBILE   </span>{{datauser.mobile}}</p>
-	    		<p><span class="font-dark-grey small">EMAIL  </span>{{datauser.email}}</p>    		
-	    		<p><span class="font-dark-grey small">ADDRESS   </span>{{datauser.address}}</p>
+	  			<p><span class="font-dark-grey small">PHONE   </span>{{datauser?.phone}}</p>
+	    		<p><span class="font-dark-grey small">MOBILE   </span>{{datauser?.mobile}}</p>
+	    		<p><span class="font-dark-grey small">EMAIL  </span>{{datauser?.email}}</p>    		
+	    		<p><span class="font-dark-grey small">ADDRESS   </span>{{datauser?.address}}</p>
 	    		
 	  		</div>
 	  	</div>	    
@@ -27,12 +27,12 @@
 	  <div class="card-block">
 	  	<div class="row">
 	  		<div class="col-md-6">
-	    		<p><span class="font-dark-grey small">NAME   </span>{{datauser.ename}}</p>
-	    		<p><span class="font-dark-grey small">ROLE   </span>{{datauser.erole}}</p>
+	    		<p><span class="font-dark-grey small">NAME   </span>{{datauser?.emergency_contact.name}}</p>
+	    		<p><span class="font-dark-grey small">ROLE   </span>{{datauser?.emergency_contact.role}}</p>
 	  		</div>
 	  		<div class="col-md-6">
-	  			<p><span class="font-dark-grey small">PHONE   </span>{{datauser.ephone}}</p>
-	    		<p><span class="font-dark-grey small">ADDRESS   </span>{{datauser.eaddress}}</p>
+	  			<p><span class="font-dark-grey small">PHONE   </span>{{datauser?.emergency_contact.phone}}</p>
+	    		<p><span class="font-dark-grey small">ADDRESS   </span>{{datauser?.emergency_contact.address}}</p>
 	    		
 	  		</div>
 	  	</div>	    

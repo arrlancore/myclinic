@@ -26,7 +26,7 @@ medicalRouter.get('/m-record/user/:id', function(req,res,next){
 	// get the data on body and send to models
 	Medical.findOne({_patientId:req.params.id}, function(err, doc) {
   res.send(doc);	
-});
+  });
 });
 
 // Adding new user to medical records

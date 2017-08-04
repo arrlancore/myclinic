@@ -13,14 +13,12 @@ const UserScheme=mongoose.Schema({
 	email:{
 		type:String,
 		required:true,
-		unique: true,
-		index:true
+		unique: true
 	},
 	username:{
 		type:String,
 		required:true,
-		unique: true,
-		index:true
+		unique: true
 	},
 	password:{
 		type:String,
@@ -41,16 +39,13 @@ const UserScheme=mongoose.Schema({
 		type:String
 	},
 	gender:{
-		type:String,
-		required:true
+		type:String
 	},
 	birth_date:{
-		type:Date,
-		required:true
+		type:Date
 	},
 	blood_type:{
-		type:String,
-		required:true
+		type:String
 	},
 	emergency_contact:{
 		name:{

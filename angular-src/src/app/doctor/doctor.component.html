@@ -1,6 +1,38 @@
 <div class="row">
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
           <h2>Doctor List</h2>
+          <ul class="list-group">
+					  <li *ngFor="let doctor of alldoctor" class="list-group-item justify-content-between text-uppercase">
+					    	DR. {{doctor.name}}
+					    <span (click)="onDeleteDoctor(doctor._id)" class="badge-pill onRemove"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+					  </li>
+					</ul> 
+					<br>
+					<flash-messages></flash-messages>
+					<h6 class="click" (click)="activateClicked()">Add New Doctor</h6>	
+				  <form id="form" *ngIf=activate>				  
+				  	<md-input-container class="fullwidth">
+					  <input mdInput [(ngModel)]="name" name="name" placeholder="Name">
+					</md-input-container>
+					<md-input-container class="fullwidth">
+					  <input mdInput [(ngModel)]="specially" name="specially" placeholder="Specialization">
+					</md-input-container>
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="username" name="username" placeholder="Username">
+					</md-input-container>
+					<md-input-container class="halfwidth">
+					  <input mdInput [(ngModel)]="password" name="password" placeholder="Password">
+					</md-input-container>
+					<md-input-container class="fullwidth">
+					  <input mdInput type="Email" [(ngModel)]="email" name="email" placeholder="Email">
+					</md-input-container>
+					<md-input-container class="fullwidth">
+					  <input mdInput [(ngModel)]="address" name="address" placeholder="address">
+					</md-input-container>
+        			<input type="submit" (click)="onSubmitDoctor()" class="main-btn bg-main text-white" value="Add">
+        			</form>
+
+					        
         </main>
       </div>
   

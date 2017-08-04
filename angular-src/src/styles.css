@@ -14,7 +14,19 @@ body {
 .loggedin{
     padding-top: 54px;
 }
-
+.record-data{
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+.fullwidth{
+  width: 100%;
+}
+.halfwidth{
+  width: 48%;
+}
+.onRemove{
+  cursor: pointer;
+}
 .main-btn {
     border: none;
     padding: 12px 26px;
