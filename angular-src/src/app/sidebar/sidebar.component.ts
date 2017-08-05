@@ -8,10 +8,19 @@ import { Router } from '@angular/router'
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-  constructor(private authService:AuthService, private router:Router) { }
+	loader:boolean=false;
+  constructor(public authService:AuthService, public router:Router) { }
 
   ngOnInit() {
+  }
+
+  logout(){
+   this.loader=true;
+  	this.authService.logout();
+  	this.router.navigate(['/']);
+  	this.loader=false;
+  	return false;
+
   }
 
 }

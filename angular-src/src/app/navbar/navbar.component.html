@@ -1,6 +1,27 @@
- <nav *ngIf="authService.loggedIn()" class="navbar fixed-top bg-main">
-      
-      <a class="navbar-brand text-white" href="#"><i class="fa fa-medkit"></i> Myclinic</a>        
-    
+<ngx-loading [show]="loader" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    <nav *ngIf="authService.loggedIn()" class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-main">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand text-white" (click)="home()"><i class="fa fa-medkit"></i> Myclinic</a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+         	<li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+         		<a class="nav-link" [routerLink]="['/dashbord']">Dashbord</a>
+         	</li>
+         	<li *ngIf="!authService.isDoctor()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+         	  	<a class="nav-link" [routerLink]="['/medicalrecord']">Medical Record</a>
+         	</li>
+         	<li *ngIf="authService.isDoctor()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+         	  	<a class="nav-link" [routerLink]="['/newrecord']">New Record</a>
+         	</li>         	
+         	<li *ngIf="authService.isDoctor()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+         	  	<a class="nav-link" [routerLink]="['/patient']">Patient</a>
+         	</li>
+         	<li *ngIf="authService.isDoctor()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+         	  	<a class="nav-link" [routerLink]="['/doctor']">Doctor</a>
+         	</li>
+         	<li  class="nav-item logout" (click)="logout()"> <a class="nav-link">Logout</a></li>
+        </ul>
+      </div>
     </nav>
-

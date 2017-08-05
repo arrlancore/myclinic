@@ -9,14 +9,25 @@ import { Router } from '@angular/router'
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService:AuthService, private router:Router) { }
+loader:boolean=false;
+
+
+  constructor(public authService:AuthService, public router:Router) { }
 
   ngOnInit() {
   }
-// logout(){
-//   	this.authService.logout();
-//   	// this.flashMessage.show("Logout...", {cssClass:'alert-success', timeout:2000});
-//   	this.router.navigate(['/']);
-//   	return false;
-//   }
+logout(){
+   this.loader=true;
+  	this.authService.logout();
+  	// this.flashMessage.show("Logout...", {cssClass:'alert-success', timeout:2000});
+  	this.router.navigate(['/']);
+  	this.loader=false;
+  	return false;
+
+  }
+home(){
+    this.router.navigate(['/']);
+  }
 }
+
+

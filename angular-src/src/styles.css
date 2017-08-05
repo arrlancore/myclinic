@@ -1,81 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Load angular material css*/
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 .mat-ink-bar{
   background-color: #999999 !important;
 }
 
 body {
-  /*font-family: 'Roboto', sans-serif;*/
   font-size: 100%;
 }
-.navbar-brand{
-	cursor: pointer;
+/*customization for home*/
+.col-md-8.home{
+    width: 100%;
+    height: 100vh;
 }
-.loggedin{
-    padding-top: 54px;
-}
-.record-data{
-  padding-top: 30px;
-  padding-bottom: 50px;
-}
-.fullwidth{
-  width: 100%;
-}
-.halfwidth{
-  width: 48%;
-}
-.onRemove{
-  cursor: pointer;
-}
-.main-btn {
-    border: none;
-    padding: 12px 26px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px 0px;
-}
-.main-btn:hover{
-	opacity: 0.9;
+.col-md-4.home{
+    width: 100%;
+    height: 100vh;
 }
 
-.main-out-btn {
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    padding: 12px 26px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px 0px;
-    border-radius: 50px;
-    background-color: #32ccfe;
+.masthead-brand{
+    padding-top: 5%;
 }
-.bg-nav{
-	background-color: #32ccfe
+.cover{
+    padding-top: 15%;
 }
-.bg-main{
-	background-color: #32ccfe;
-}
-.bg-white{
-	background-color: #ffffff;
-}
-.bg-grey{
-	background-color: #f3f3f3;
-}
-.font-main{
-    color: #32ccfe;
-}
-.font-grey{
-    color: #f3f3f3;
-}
-.font-dark-grey{
-    color: #888888;
+.form-signin{
+    padding-top: 60%;
 }
 
+/*custom doctor page*/
+.click{
+    cursor: pointer;
+}
+/*medical record custom*/
+.card{
+    margin-bottom: 10px;
+}
+/*Custom input*/
 input.main {
     width: 100%;
     padding: 10px 20px;
@@ -102,4 +64,146 @@ input.main:focus {
 }
 .completer-input:focus {
     border: 2px solid #ccc;
+}
+/*//cutom input*/
+
+/*Clickable logo*/
+.navbar-brand{
+	cursor: pointer;
+}
+.loggedin{
+    padding-top: 54px;
+}
+/*new record customization*/
+.record-data{
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+.fullwidth{
+  width: 100%;
+}
+.halfwidth{
+  width: 48%;
+}
+.onRemove{
+  cursor: pointer;
+}
+/*//new record*/
+.logout{
+    cursor: pointer;
+}
+.navbar-nav{
+    display: none;
+}
+.navbar-toggler{
+    display: none;
+}
+
+/*register customization*/
+.form-register{
+    margin: 0 auto;
+    margin-top: 100px;
+}
+.required{
+    color: red
+}
+/*sidebar customization*/
+.sidebar{
+    padding-top: 20px;
+    height: 100vh;
+    position: fixed;
+}
+.nav-pills .nav-item.show .nav-link, .nav-pills .nav-link.active{
+    background-color: unset !important;
+    opacity: 0.8;
+}
+
+a{
+    color: #333;
+    text-decoration:none;
+}
+
+/*//sidebar*/
+
+/*custom button*/
+.main-btn {
+    border: none;
+    padding: 12px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0px;
+}
+.main-btn:hover{
+	opacity: 0.9;
+}
+
+.main-out-btn {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    padding: 12px 26px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0px;
+    background-color: #32ccfe;
+}
+/* // custom button*/
+
+/*Cutom background*/
+.bg-nav{
+	background-color: #32ccfe
+}
+.bg-main{
+	background-color: #32ccfe;
+}
+.bg-white{
+	background-color: #ffffff;
+}
+.bg-grey{
+	background-color: #f3f3f3;
+}
+.font-main{
+    color: #32ccfe;
+}
+.font-grey{
+    color: #f3f3f3;
+}
+.font-dark-grey{
+    color: #888888;
+}
+/*//Cutom background*/
+
+/*responsive setting*/
+@media screen and (max-width: 576px){
+        .navbar-nav{
+            display: block;
+        }
+        .navbar-toggler{
+            display: block;
+        }
+        .sidemenu{
+            font-size: 70%;
+        }
+        
+    }
+
+@media screen and (max-width: 768px){
+        .form-signin{
+            padding-top: 20px;
+        }
+        .col-md-4.home{
+            height: auto;
+        }
+
+}
+
+@media screen and (max-width: 1140px){
+        .sidemenu{
+            font-size: 80%;
+        }
 }

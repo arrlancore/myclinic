@@ -20,14 +20,14 @@ datam=[];
 dataal=[];
 datafs=[];
 
-  constructor(private authService:AuthService,private medicaldata:MedicaldataService, private route:ActivatedRoute, private router:Router) { 
+  constructor(public authService:AuthService,public medicaldata:MedicaldataService, public route:ActivatedRoute, public router:Router) { 
 
   	
   	
   }
 
   ngOnInit() {
-// Load Id of user
+    // Load Id of user
         this.localdata=JSON.parse(localStorage.getItem('user'))
           var sub = this.route.params.subscribe(params => {
           this.id = params['id'] || this.localdata.id;

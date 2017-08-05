@@ -10,18 +10,23 @@ import { Router } from '@angular/router'
 })
 export class PatientComponent implements OnInit {
 patientlist:any;
-  constructor(private flashMessage:FlashMessagesService,
-    private authService:AuthService,
-    private router:Router) { }
+  constructor(public flashMessage:FlashMessagesService,
+    public authService:AuthService,
+    public router:Router) { }
 
   ngOnInit() {
+  	if(!this.authService.isDoctor()){
+    this.router.navigate(['/dashbord']);
+    }
   	this.getListpatient();
   }
+  // get all patient
   getListpatient(){
   	this.authService.getListPatient().subscribe(data=>{
   		this.patientlist=data;
   	});
   }
+  // delete patient by id
   onDeletePatient(id){
   	this.authService.deleteUser(id).subscribe(data=>{
   		if(data.success){
@@ -34,6 +39,7 @@ patientlist:any;
   		}
   	})
   }
+  // View medical record of patient
   onSeePatient(id){
   	this.router.navigate(['/medicalrecord', id]);
   }

@@ -1,5 +1,6 @@
+    <ngx-loading [show]="loader" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 <div class="row">
-  <div class="col-md-8 bg-main">
+  <div class="col-md-8 home bg-main">
   	<h1 class="masthead-brand text-white displai"><i class="fa fa-medkit"></i> Myclinic</h1>
   	<div class="inner cover">
             <h2 class="display-3 text-white">Welcome</h2>
@@ -10,7 +11,7 @@
             <input type="submit" (click)="onRegister()" value="REGISTER HERE" class="main-out-btn">
           </div>
   </div>
-  <div class="col-md-4 bg-grey">
+  <div class="col-md-4 home bg-grey">
   	<form class="form-signin" (submit)="onLoginSubmit()">
         <h4 class="form-signin-heading">Or login to your account</h4>
         <label for="inputEmail" class="sr-only">Username</label>

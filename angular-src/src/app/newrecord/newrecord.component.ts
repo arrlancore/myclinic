@@ -3,6 +3,8 @@ import { CompleterService, CompleterData, CompleterItem } from 'ng2-completer';
 import { MedicaldataService } from '../../services/medicaldata.service';
 import { DatePipe } from '@angular/common';
 import { FlashMessagesService} from 'angular2-flash-messages';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,48 +13,53 @@ import { FlashMessagesService} from 'angular2-flash-messages';
   styleUrls: ['./newrecord.component.css']
 })
 export class NewrecordComponent implements OnInit {
-  protected searchStr: string;
-  protected dataService: CompleterData;
-  protected patientData:any;
-  protected selectedItem:any;
-  private patientId:any;
-  private listrecord:any;
-  private totalrecord:any;
-  private listhistory:any;
-  private listmedication:any;
-  private listallergies:any;
-   private listfs:any;
+  public searchStr: string;
+  public dataService: CompleterData;
+  public patientData:any;
+  public selectedItem:any;
+  public patientId:any;
+  public listrecord:any;
+  public totalrecord:any;
+  public listhistory:any;
+  public listmedication:any;
+  public listallergies:any;
+   public listfs:any;
   isOpen:boolean;
   recorderActive:boolean=false;
-  private complaint:string;
-  private lab_result:string;
-  private diag_result:string;
-  private problem_list:string;
-  private plan:string;
-  private weight:string
-  private height:string;
-  private doctor:string;
-  private mhistory:string;
-  private year:string;
-  private mchistory:string;
-  private status:string;
-  private alertype:string;
-  private alerof:string;
-  private fstitle:string;
-  private fsstatus:string;
+  public complaint:string;
+  public lab_result:string;
+  public diag_result:string;
+  public problem_list:string;
+  public plan:string;
+  public weight:string
+  public height:string;
+  public doctor:string;
+  public mhistory:string;
+  public year:string;
+  public mchistory:string;
+  public status:string;
+  public alertype:string;
+  public alerof:string;
+  public fstitle:string;
+  public fsstatus:string;  
+loader:boolean=false;
 
-  constructor(private completerService: CompleterService, private medicaldata:MedicaldataService,
-    private flashMessage:FlashMessagesService) {
-  	this.dataService = this.completerService.remote("http://localhost:4000/users/listpatient?", 'name', 'name');		
+
+
+  constructor(public completerService: CompleterService, public medicaldata:MedicaldataService,
+    public flashMessage:FlashMessagesService,public router:Router, public authService:AuthService) {
+// data service for autocomplete form
+  	this.dataService = this.completerService.remote("users/listpatient?", 'name', 'name');		
   	var user=JSON.parse(localStorage.getItem('user'));
     this.doctor=user.name;
    }
 
   ngOnInit() {
-
+  	if(!this.authService.isDoctor()){
+  	    this.router.navigate(['/dashbord']);	
+  	}
   }
-
-
+// If name of patient selected
  onItemSelect(selected:CompleterItem){
 	if(selected){
 	this.selectedItem = selected.originalObject._id;
@@ -63,8 +70,9 @@ export class NewrecordComponent implements OnInit {
 	}
 
 }
-
+// Load data record by Id
 loadRecordById(id){
+	this.loader=true;
 	this.medicaldata.getPatientRecord(id).subscribe(record =>{
 		this.patientId=record._id;
 		this.listrecord=record.m_record;
@@ -73,9 +81,12 @@ loadRecordById(id){
 		this.listmedication=record.medication_history;
 		this.listallergies=record.allergies;
 		this.listfs=record.fs_history;
+		this.loader=false;
 	},err=>{
+		this.loader=false;
   		console.log(err);
   		return false;
+
   	});
 
 }
@@ -89,6 +100,7 @@ cleanMedicalRecord(){
 		this.weight="";
 		this.height="";
 }
+// Submit medical rrecord
 onSubmitMedicalRecord(){
 	const data={
 		complaint:this.complaint,
@@ -100,6 +112,7 @@ onSubmitMedicalRecord(){
 		weight:this.weight,
 		height:this.height
 	}
+	// start submit to server
 	this.medicaldata.onSubmitMR(data,this.patientId).subscribe(data =>{ 
 		if(data.success){
 			this.flashMessage.show("Success added", {cssClass:'alert-success', timeout:3000});  
@@ -111,9 +124,9 @@ onSubmitMedicalRecord(){
 		}
 	});
 }
-
+// Remove medical record by id
 removeMR(id){
-	this.medicaldata.onDeleteMR(this.selectedItem,id).subscribe(data =>{	
+	this.medicaldata.onDeleteMR(this.patientId,id).subscribe(data =>{	
 	if(data.success){
 			this.flashMessage.show("Removed", {cssClass:'alert-success', timeout:3000}); 	
 			this.loadRecordById(this.selectedItem);
@@ -124,6 +137,7 @@ removeMR(id){
 
 	})
 }
+// submit medical history
 onSubmitMedicalHistory(){
 	const data={
 		title:this.mhistory,
@@ -140,8 +154,9 @@ onSubmitMedicalHistory(){
 		}
 	});
 }
+// remove medical history
 removeHM(id){
-	this.medicaldata.onDeleteHM(this.selectedItem,id).subscribe(data =>{	
+	this.medicaldata.onDeleteHM(this.patientId,id).subscribe(data =>{	
 	if(data.success){
 			this.flashMessage.show("Removed", {cssClass:'alert-success', timeout:3000}); 	
 			this.loadRecordById(this.selectedItem);
@@ -152,6 +167,7 @@ removeHM(id){
 
 	})
 }
+// submit medication history
 onSubmitMedicationHistory(){
 	const data={
 		name:this.mchistory,
@@ -169,8 +185,9 @@ onSubmitMedicationHistory(){
 	});
 
 }
+// remove medication history
 removeHMC(id){
-	this.medicaldata.onDeleteHMC(this.selectedItem,id).subscribe(data =>{	
+	this.medicaldata.onDeleteHMC(this.patientId,id).subscribe(data =>{	
 	if(data.success){
 			this.flashMessage.show("Removed", {cssClass:'alert-success', timeout:3000}); 	
 			this.loadRecordById(this.selectedItem);
@@ -181,6 +198,7 @@ removeHMC(id){
 
 	})
 }
+// submit allergies
 onSubmitAllergies(){
 	const data={
 		name:this.alerof,
@@ -197,8 +215,9 @@ onSubmitAllergies(){
 		}
 	});
 }
+// remove allergies by id
 removeAllergies(id){
-	this.medicaldata.onDeleteAllergies(this.selectedItem,id).subscribe(data =>{	
+	this.medicaldata.onDeleteAllergies(this.patientId,id).subscribe(data =>{	
 	if(data.success){
 			this.flashMessage.show("Removed", {cssClass:'alert-success', timeout:3000}); 	
 			this.loadRecordById(this.selectedItem);
@@ -209,6 +228,7 @@ removeAllergies(id){
 
 	})
 }
+// submit family and social history
 onSubmitFS(){
 	const data={
 		name:this.fstitle,
@@ -226,8 +246,9 @@ onSubmitFS(){
 	});
 
 }
+// remove family/social history by id
 removeFS(id){
-	this.medicaldata.onDeleteFS(this.selectedItem,id).subscribe(data =>{	
+	this.medicaldata.onDeleteFS(this.patientId,id).subscribe(data =>{	
 	if(data.success){
 			this.flashMessage.show("Removed", {cssClass:'alert-success', timeout:3000}); 	
 			this.loadRecordById(this.selectedItem);

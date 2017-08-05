@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes} from '@angular/router';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { Ng2CompleterModule } from "ng2-completer";
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -23,11 +22,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PatientComponent } from './patient/patient.component';
 import { DoctorComponent } from './doctor/doctor.component';
 
+import { LoadingModule } from 'ngx-loading';
+
 
 const appRoutes : Routes = [
 {path:'', component:HomeComponent},
 {path:'register', component:RegisterComponent},
-// {path:'profile', component:ProfileComponent, canActivate:[AuthGuard]},
  {path:'dashbord', component:DashbordComponent, canActivate:[AuthGuard]},
  {path:'medicalrecord', component:MedicalrecordComponent, canActivate:[AuthGuard]},
  {path:'medicalrecord/:id', component:MedicalrecordComponent, canActivate:[AuthGuard]},
@@ -60,7 +60,8 @@ const appRoutes : Routes = [
     BrowserAnimationsModule,
     MdTabsModule,
     MdInputModule,
-    MdSelectModule
+    MdSelectModule,
+    LoadingModule
   ],
   providers: [AuthService,ValidateService,AuthGuard,MedicaldataService],
   bootstrap: [AppComponent]

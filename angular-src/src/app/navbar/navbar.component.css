@@ -1,3 +1,17 @@
 .logout{
 	cursor: pointer;
 }
+.navbar-nav{
+	display: none;
+}
+.navbar-toggler{
+	display: none;
+}
+@media screen and (max-width: 576px){
+		.navbar-nav{
+		display: block;
+		}
+		.navbar-toggler{
+	display: block;
+}
+	}

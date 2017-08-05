@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AuthService } from '../../services/auth.service';
 import { ValidateService } from '../../services/validate.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor',
@@ -17,12 +18,17 @@ export class DoctorComponent implements OnInit {
 	address:string;
 	alldoctor:any;
 	activate:boolean=false;
-  constructor(private validateService:ValidateService,
-    private flashMessage:FlashMessagesService,
-    private authService:AuthService) { }
+  constructor(public validateService:ValidateService,
+    public flashMessage:FlashMessagesService,
+    public authService:AuthService,
+    public router:Router) { }
 
   ngOnInit() {
-  	this.getListdoctor();
+    if(!this.authService.isDoctor()){
+    this.router.navigate(['/dashbord']);
+    }
+  this.getListdoctor();
+
   }
 
   getListdoctor(){

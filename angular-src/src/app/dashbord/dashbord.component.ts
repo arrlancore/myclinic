@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-dashbord',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashbord.component.css']
 })
 export class DashbordComponent implements OnInit {
-	private name:any;
-  constructor() {  	
+	public name:any;
+  constructor(public auth:AuthService) {  	
 
     var user=JSON.parse(localStorage.getItem('user'));
 
@@ -16,6 +18,7 @@ export class DashbordComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.auth.isDoctor();
   }
 
 }

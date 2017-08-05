@@ -9,7 +9,11 @@ const passport=require('passport');
 const config=require('./config/database');
 const mongoose=require('mongoose');
 // Connect to database
-mongoose.connect(config.database);
+const options = { 
+                server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } 
+              };
+mongoose.connect(config.database, options);
 // On connection db
 mongoose.connection.on('connected', ()=>{
 	console.log("Connected to db " + config.database);
@@ -20,7 +24,7 @@ mongoose.connection.on('error', (err)=>{
 })
 
 // Config the port number
-const port= 4000; //process.env.PORT || 8080;
+const port= process.env.PORT || 4000;
 
 const users=require('./route/users');
 const medicals=require('./route/medicals');
@@ -30,6 +34,9 @@ app.use(cors());
 
 // Body parser middleware
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: 'application/json'})); 
 
 // Parser middleware
 app.use(passport.initialize());
@@ -41,8 +48,10 @@ require('./config/passport')(passport);
 app.use('/users', users);
 // User route
 app.use('/medicals', medicals);
-// Medicals route
-//  app.use('/medicals', medicals);
+
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Index route
 app.get('/', (req, res)=>{
 	res.send('Invalid Endpoint');
@@ -59,6 +68,7 @@ app.use(function(err,req,res,next){
 });
 
 // Start server
-app.listen(port, () =>{
+var server=app.listen(port, () =>{
 	console.log("Server started listening on the port number: "+port);
 });
+module.exports = server

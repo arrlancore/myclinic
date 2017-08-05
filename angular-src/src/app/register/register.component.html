@@ -1,8 +1,9 @@
+<ngx-loading [show]="loader" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
  <nav class="navbar bg-nav fixed-top">
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand text-white" title="myclinic" (click)="onHome()"><i class="fa fa-medkit"></i> myclinic</a>
+      <a class="navbar-brand text-white" (click)="home()" title="myclinic"><i class="fa fa-medkit"></i> myclinic</a>
     </nav>
  <div class="container">
  <div class="row">
@@ -23,16 +24,16 @@
 				    		</div>
 				    		<div class="col-xs-6 col-sm-6 col-md-6">
 								<div class="form-group">
-								<label for="birthdate">Date of Birth<span class="required">*</span></label>
-				                <input type="date" [(ngModel)]="birthdate" name="birthdate" id="birthdate" class="form-control" placeholder="Date of Birth" required="true">
+								<label for="birthdate">Date of Birth</label>
+				                <input type="date" [(ngModel)]="birthdate" name="birthdate" id="birthdate" class="form-control" placeholder="Date of Birth">
 				    			</div>
 				    		</div>
 			    		</div>
 			    		<div class="row">
 				    		<div class="col-xs-6 col-sm-6 col-md-6">
 				    			<div class="form-group">
-				    			<label for="gender">Gender<span class="required">*</span></label>
-								  <select class="form-control" [(ngModel)]="gender" name="gender" id="gender" required="true">
+				    			<label for="gender">Gender</label>
+								  <select class="form-control" [(ngModel)]="gender" name="gender" id="gender">
 								    <option selected="true" disabled="true"> </option>
 								    <option value="Male">Male</option>
 								    <option value="Female">Female</option>
