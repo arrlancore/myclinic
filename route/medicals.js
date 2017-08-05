@@ -2,7 +2,6 @@ const express=require('express');
 const medicalRouter=express.Router();
 const passport=require('passport');
 const jwt=require('jsonwebtoken');
-const config=require('../config/database');
 
 const Medical=require('../models/medical');
 
