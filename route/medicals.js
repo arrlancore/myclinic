@@ -72,7 +72,7 @@ medicalRouter.put('/m-record/update/:id/:mid', function(req,res, next){
 
 // Delete medical record by Id
 medicalRouter.put('/m-record/delete/:id/:mid', function(req,res,next){
-	Medical.update({"_id":req.params.id}, { "$pull": { "m_record": { "_id": (req.params.mid) } }}, { safe: true, multi:true }, 
+	Medical.update({_id:req.params.id}, { "$pull": { "m_record": { "_id": (req.params.mid) } }}, { safe: true, multi:true }, 
 		function(err, obj) {
 			if(err){
         	console.log(err);
