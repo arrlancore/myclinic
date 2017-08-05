@@ -8,6 +8,7 @@ const cors=require('cors');
 const passport=require('passport');
 const config=require('./config/database');
 const mongoose=require('mongoose');
+const compression = require('compression');
 // Connect to database
 const options = { 
                 server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
@@ -21,7 +22,10 @@ mongoose.connection.on('connected', ()=>{
 // On connection error
 mongoose.connection.on('error', (err)=>{
 	console.log("database error " + err);
-})
+});
+
+// compress all responses
+app.use(compression({ threshold: 0 }))
 
 // Config the port number
 const port= process.env.PORT || 8080;

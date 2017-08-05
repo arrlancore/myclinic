@@ -7,7 +7,7 @@
 * [Angular 4] as frontend
 * [NodeJS] as server
 
-Check it live version [here](http://heroku.com)
+Check it live version [here](https://clinic-mean.herokuapp.com)
 
 ####Users
 As Doctor
