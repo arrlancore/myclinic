@@ -11,10 +11,12 @@
 
 Check it live version [here](https://clinic-mean.herokuapp.com)
 
-####Users
+### Users testing
 As Doctor
 username: doctor1
 password: password,
+
+
 As Patient
 username: patient1
 password: password
