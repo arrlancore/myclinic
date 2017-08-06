@@ -7,7 +7,7 @@
 * [ExpressJS] as backend
 * [Angular 4] as frontend
 * [NodeJS] as server
-And some great dependencies.
+* And some great dependencies.
 
 Check it live version [here](https://clinic-mean.herokuapp.com)
 
