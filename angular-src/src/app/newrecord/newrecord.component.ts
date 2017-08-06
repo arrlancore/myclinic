@@ -50,14 +50,16 @@ loader:boolean=false;
     public flashMessage:FlashMessagesService,public router:Router, public authService:AuthService) {
 // data service for autocomplete form
   	this.dataService = this.completerService.remote("users/listpatient?", 'name', 'name');		
-  	var user=JSON.parse(localStorage.getItem('user'));
-    this.doctor=user.name;
+  	
    }
 
   ngOnInit() {
   	if(!this.authService.isDoctor()){
   	    this.router.navigate(['/dashbord']);	
   	}
+  	let user=JSON.parse(localStorage.getItem('user'));
+    this.doctor=user.name;
+    console.log(this.doctor);
   }
 // If name of patient selected
  onItemSelect(selected:CompleterItem){
@@ -207,7 +209,7 @@ onSubmitAllergies(){
 	this.medicaldata.onSubmitAllergies(data,this.patientId).subscribe(data=>{
 		if(data.success){
 			this.flashMessage.show("Success added", {cssClass:'alert-success', timeout:3000});  
-			this.mchistory="",this.status="";
+			this.alerof="",this.alertype="";
 			this.loadRecordById(this.selectedItem);
 		}else{
 			this.flashMessage.show("Something went wrong", {cssClass:'alert-danger', timeout:3000});  
@@ -237,7 +239,7 @@ onSubmitFS(){
 	this.medicaldata.onSubmitFS(data,this.patientId).subscribe(data=>{
 		if(data.success){
 			this.flashMessage.show("Success added", {cssClass:'alert-success', timeout:3000});  
-			this.mchistory="",this.status="";
+			this.fstitle="",this.fsstatus="";
 			this.loadRecordById(this.selectedItem);
 		}else{
 			this.flashMessage.show("Something went wrong", {cssClass:'alert-danger', timeout:3000});  
