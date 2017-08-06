@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/arrlancore/myclinic.svg?branch=master)](https://travis-ci.org/arrlancore/myclinic)
 # Clinic Apps using MEAN STACK
 
 ### Tech
